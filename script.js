@@ -2,32 +2,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const audioElement = document.getElementById('audioElement');
     const rotatingImage = document.getElementById('vinylImage');
 
-    // Reload the audio stream when resuming play after a pause
-    audioElement.addEventListener('play', () => {
-        if (audioElement.paused === false) {
-            const currentSrc = audioElement.src;
-            audioElement.src = '';
-            audioElement.src = currentSrc;
-            audioElement.play();
-        }
-    });
-
     // Check if the audio is playing, and rotate the image
     audioElement.addEventListener('playing', function() {
-        rotatingImage.classList.remove('no-rotate'); // Start rotation
+        rotatingImage.classList.remove('paused'); // Start rotation
     });
 
     // If the audio is paused or fails to play, stop the rotation
+    // Also reload the audio source so pressing play again is caught up
     audioElement.addEventListener('pause', function() {
-        rotatingImage.classList.add('no-rotate'); // Stop rotation
+        rotatingImage.classList.add('paused');
+        const currentSrc = audioElement.children[0].src;
+        audioElement.src = '';
+        audioElement.src = currentSrc;
     });
 
     audioElement.addEventListener('error', function() {
-        rotatingImage.classList.add('no-rotate'); // Stop rotation on error
+        rotatingImage.classList.add('paused');
     });
 
     // Initial check in case the stream is not active on page load
     if (audioElement.paused) {
-        rotatingImage.classList.add('no-rotate'); // Stop rotation if not playing
+        rotatingImage.classList.add('paused');
     }
 });

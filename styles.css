@@ -70,9 +70,12 @@ audio::-webkit-media-controls-time-remaining-display {
 
 /* Rotate the vinyl image continuously when playing */
 .rotate {
-    width: 180px;
-    height: auto;
     animation: rotation 4s infinite linear;
+    animation-play-state: running;
+}
+
+.rotate.paused {
+    animation-play-state: paused;
 }
 
 @keyframes rotation {
@@ -82,10 +85,6 @@ audio::-webkit-media-controls-time-remaining-display {
     to {
         transform: translate(-50%, -50%) rotate(360deg);
     }
-}
-
-.no-rotate {
-    animation: none;
 }
 
 @font-face {
