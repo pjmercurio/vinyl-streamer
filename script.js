@@ -24,4 +24,36 @@ document.addEventListener('DOMContentLoaded', function() {
     if (audioElement.paused) {
         rotatingImage.classList.add('paused');
     }
+
+    // If Safari is detected, modify the audio element style
+    checkIfSafari();
+
+    // Fetch the listener count initially and every 20 seconds
+    fetchListeners();
+    setInterval(fetchListeners, 20000);
 });
+
+async function fetchListeners() {
+    try {
+      const response = await fetch('http://paulmercurio.tplinkdns.com:8001/status-json.xsl');
+      const data = await response.json();
+      const listenerCountElement = document.getElementById('listener-count');
+      const listenerCount = data.icestats.source.listeners;
+
+      listenerCountElement.style.display = 'block';
+      listenerCountElement.innerText = `Listener Count: ${listenerCount}`;
+    } catch (error) {
+      console.error('Error fetching Icecast stats:', error);
+      listenerCountElement.style.display = 'none';
+      listenerCountElement.innerText = 'Error fetching listener count';
+    }
+}
+
+function checkIfSafari() {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (!isSafari) return;
+    const audioElement = document.getElementById('audioElement');
+    if (audioElement) {
+        audioElement.style.width = 'revert'; // Remove the fixed width for Safari
+    }
+}

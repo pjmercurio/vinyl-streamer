@@ -1,3 +1,10 @@
+/* html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+} */
+
 body {
     margin: 0;
     height: 100vh;
@@ -7,6 +14,7 @@ body {
     background-color: #1b1b1b;
     color: #f5f5f5;
     user-select: none;
+    overflow: hidden;
 }
 
 .container {
@@ -26,6 +34,15 @@ h1 {
     font-size: 42pt;
     color: #DBA841;
     bottom: 100px;
+}
+
+h3 {
+    position: absolute;
+    display: none;
+    font-size: 12pt;
+    font-family: 'Super Funky';
+    top: 225px;
+    color: #007291;
 }
 
 audio {
@@ -53,6 +70,12 @@ audio {
         bottom: 65px;
     }
 
+
+    h3 {
+        top: 140px;
+        font-size: 8pt;
+    }
+
     audio {
         top: 100px;
     }
@@ -67,6 +90,15 @@ audio::-webkit-media-controls-current-time-display,
 audio::-webkit-media-controls-time-remaining-display {
     display: none;
 }
+
+/* Safari-specific hack for player width */
+@media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      audio {
+        width: auto;
+      }
+    }
+  }
 
 /* Rotate the vinyl image continuously when playing */
 .rotate {
@@ -90,6 +122,13 @@ audio::-webkit-media-controls-time-remaining-display {
 @font-face {
     font-family: 'Boogie Boys Regular';
     src: url('fonts/BoogieBoysRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Super Funky';
+    src: url('fonts/SuperFunky.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
