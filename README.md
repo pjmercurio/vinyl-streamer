@@ -18,4 +18,4 @@ For this project I use Icecast to host the actual stream, and BUTT ("broadcast u
 
 ### Example
 
-![GIFMaker_me](https://github.com/user-attachments/assets/b96675b2-964d-457e-9e53-4aee4def3374)
+![ezgif-6-f0dba52aa5](https://github.com/user-attachments/assets/71fd0534-2bfa-4a6c-b054-5e17fef7bbb6)
