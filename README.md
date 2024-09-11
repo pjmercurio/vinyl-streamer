@@ -5,6 +5,7 @@ A little website for streaming music currently playing on my turntable in my apa
 - Turntable (I have an Audio-Technica AT-LP60X-BK)
 - Cable to run from turntable to capture device (I'm using a 1/8" to RCA)
 - Audio capture device (I use a VIDBOX VCDE8, mainly used for DV video capturing)
+- Cable to connect capture device to computer (I'm using a mini USB for the VIDBOX)
 
 ### Getting Started
 For this project I use Icecast to host the actual stream, and BUTT ("broadcast using this tool") to capture the audio signal from the VIDBOX and stream it to Icecast.  I initially tried to do this with ffmpeg -> Icecase but I kept having audio quality problems.
