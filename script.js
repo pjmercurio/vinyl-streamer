@@ -40,12 +40,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const deltaX = -(currentX - startX)
 
         // Rotate the tonearm based on the new angle
+        const leftRotationLimit = 34;
+        const rightRotationLimit = -12;
         if (window.innerWidth < 600) {
             currentRotation += deltaX / 4;
-            tonearmImage.style.transform = `translate(180%, -75%) rotate(${currentRotation}deg)`;
+            if (currentRotation <= leftRotationLimit && currentRotation >= rightRotationLimit) {
+                tonearmImage.style.transform = `translate(180%, -75%) rotate(${currentRotation}deg)`;
+            }
         } else {
             currentRotation += deltaX / 7;
-            tonearmImage.style.transform = `translate(155%, -70%) rotate(${currentRotation}deg)`;
+            if (currentRotation <= leftRotationLimit && currentRotation >= rightRotationLimit) {
+                tonearmImage.style.transform = `translate(155%, -70%) rotate(${currentRotation}deg)`;
+            }
         }
         
         // Update the starting X position for the next move
@@ -76,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listeners for mouse and touch events
     function startDragging(event) {
-        console.log("START DRAGGING");
         isDragging = true;
         startX = getXPosition(event);
 
@@ -94,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function stopDragging(event) {
-        console.log("STOP DRAGGING!");;
         if (isDragging) checkOverlap(true);
         isDragging = false;
         document.removeEventListener(isTouchDevice ? 'touchmove' : 'mousemove', rotateTonearm);
