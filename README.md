@@ -19,4 +19,5 @@ For this project I use Icecast to host the actual stream, and BUTT ("broadcast u
 
 ### Example
 
-![ezgif-6-f0dba52aa5](https://github.com/user-attachments/assets/71fd0534-2bfa-4a6c-b054-5e17fef7bbb6)
+![ezgif-4-4bb92fbc6b](https://github.com/user-attachments/assets/1e87cb7f-4c50-45b7-9857-796943b0080a)
+
