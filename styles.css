@@ -39,14 +39,15 @@ h1 {
 h3 {
     position: absolute;
     display: none;
-    font-size: 12pt;
+    top: 200px;
+    font-size: 13pt;
     font-family: 'Super Funky';
-    top: 225px;
     color: #007291;
 }
 
 audio {
     position: absolute;
+    display: none;
     top: 175px;
     width: 150px;
     height: 40px;
@@ -57,10 +58,25 @@ audio {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(0deg);
-    opacity: 0.4;
+    transition: transform 1s ease-in;
+    opacity: 0.8;
     width: 100%;
     max-width: 600px;
     z-index: -1;
+}
+
+#tonearmImage {
+    position: absolute;
+    top: 50%; /* Adjust based on where you want the tone arm */
+    left: 50%;
+    user-select: none;
+    transform: translate(155%, -70%) rotate(0deg);
+    transform-origin: center 150px;
+    opacity: 1;
+    width: 25%;
+    max-width: 150px; /* Adjust this size to fit with the vinyl image */
+    cursor: pointer;
+    z-index: 1; /* Make sure it's on top of the vinyl */
 }
 
 /* Media query for smaller screens */
@@ -70,10 +86,9 @@ audio {
         bottom: 65px;
     }
 
-
     h3 {
-        top: 140px;
-        font-size: 8pt;
+        top: 120px;
+        font-size: 9pt;
     }
 
     audio {
@@ -82,6 +97,12 @@ audio {
 
     #vinylImage {
         max-width: 350px;
+    }
+
+    #tonearmImage {
+        transform: translate(180%, -75%) rotate(0deg);
+        transform-origin: center 80px;
+        max-width: 75px;
     }
 }
 
@@ -104,6 +125,7 @@ audio::-webkit-media-controls-time-remaining-display {
 .rotate {
     animation: rotation 4s infinite linear;
     animation-play-state: running;
+    transition: transform 0.5s ease;
 }
 
 .rotate.paused {
