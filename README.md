@@ -8,7 +8,7 @@ A little website for streaming music currently playing on my turntable in my apa
 - Cable to connect capture device to computer (I'm using a mini USB for the VIDBOX)
 
 ### Getting Started
-For this project I use Icecast to host the actual stream, and BUTT ("broadcast using this tool") to capture the audio signal from the VIDBOX and stream it to Icecast.  I initially tried to do this with ffmpeg -> Icecase but I kept having audio quality problems.
+For this project I use Icecast to host the actual stream, and BUTT ("broadcast using this tool") to capture the audio signal from the VIDBOX and stream it to Icecast.  I initially tried to do this with ffmpeg -> Icecast but I kept having audio quality problems.
 
 1) Install Icecast: `brew install icecast`
 2) Configure Icecast: `sudo nano /opt/homebrew/etc/icecast.xml` or if not on Apple Silicon: `sudo nano /usr/local/etc/icecast.xml`
