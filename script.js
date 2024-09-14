@@ -126,8 +126,8 @@ async function fetchListeners() {
       const listenerCountElement = document.getElementById('listener-count');
       const listenerCount = data.icestats.source.listeners;
 
-      listenerCountElement.style.display = 'block';
       listenerCountElement.innerText = `Listener Count: ${listenerCount}`;
+      listenerCountElement.style.display = listenerCount > 0 ? 'block' : 'none';
     } catch (error) {
       console.error('Error fetching Icecast stats:', error);
       listenerCountElement.style.display = 'none';

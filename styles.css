@@ -15,6 +15,10 @@ body {
     color: #f5f5f5;
     user-select: none;
     overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -59,7 +63,6 @@ audio {
     left: 50%;
     transform: translate(-50%, -50%) rotate(0deg);
     transition: transform 1s ease-in;
-    opacity: 0.8;
     width: 100%;
     max-width: 600px;
     z-index: -1;
