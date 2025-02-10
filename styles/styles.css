@@ -90,9 +90,10 @@ audio {
 }
 
 /* Media query for smaller screens */
-@media (max-width: 600px) {
+@media (max-width: 600px), (max-height: 600px) {
+
     .container {
-        bottom: 75px;
+        bottom: 20px;
     }
 
     h1 {
@@ -124,6 +125,28 @@ audio {
         transform-origin: center 80px;
         max-width: 75px;
     }
+}
+
+@media (max-height: 600px) {
+
+    h1 {
+        font-size: 18pt;
+    }
+
+    #album-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    #vinyl-image {
+        width: 300px;
+        height: 300px;
+    }
+
+    #listener-count-container {
+        font-size: 10pt;
+    }
+
 }
 
 audio::-webkit-media-controls-timeline,

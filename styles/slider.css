@@ -107,8 +107,8 @@ input[type="range"]::-webkit-slider-runnable-track:active {
     background: #666;
   } */
 
-  @media (max-width: 600px) {
+  @media (max-width: 600px), (max-height: 600px) {
     .slider-container {
-        top: 250px;
+        display: none;
     }
   }

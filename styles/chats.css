@@ -195,7 +195,7 @@
 }
 
 /* Mobile styles for screens smaller than 768px (typical mobile) */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px), (max-height: 600px) {
     #chatWindow {
         bottom: 0;
         right: 0;
@@ -213,5 +213,14 @@
 
     #usernameInput, #messageInput, #sendButton {
         font-size: 16px;
+    }
+
+    .chat-toggle {
+        height: 22px;
+    }
+
+    #chat-bubble {
+        width: 26px;
+        height: 26px;
     }
 }
