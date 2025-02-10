@@ -235,15 +235,6 @@ function setupSockets() {
         } catch (error) {
             console.error("🚨 Error sending message:", error);
         }
-  
-        // if (message) {
-        //     socket.emit('chat message', { message, username, timestamp });  // Send message with username
-        //     messageInput.value = '';  // Clear message input
-        //     messagesList.style.display = 'block';
-
-        //     // Update the default username in local storage
-        //     if (!!usernameInput.value) localStorage.setItem('username', username);
-        // }
     }
 
     // Send message when button is clicked
