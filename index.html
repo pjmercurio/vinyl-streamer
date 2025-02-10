@@ -2,29 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <title>Paul's Live Vinyl Stream</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/slider.css">
+    <link rel="stylesheet" href="styles/chats.css">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="scripts/main.js"></script>
 </head>
 <body>
     <div class="container">
-        <img src="images/vinyl.png" id="vinylImage" alt="Rotating Image" class="rotate paused">
+        <div id="vinyl-image-container" class="rotate paused">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png" id="album-image">
+            <img src="images/vinyl.png" id="vinyl-image">
+        </div>
         <img src="images/tone-arm.png" id="tonearmImage" alt="Tone Arm Image">
 
         <h1>Paul's Live Vinyl Stream</h1>
 
         <audio id="audioElement" controls>
-            <source src="http://paulmercurio.tplinkdns.com:8001/stream" type="audio/mpeg">
+            <source src="https://pauljmercurio.tplinkdns.com/stream/stream" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
-        <h3 id="listener-count">Listener Count: 0</h3>
+        <div id="listener-count-container">
+            <span id="listener-count">Listener Count: 0</span>
+            <span id="chat-toggle" class="chat-toggle">
+                <span id="chat-bubble" class="chat-bubble"></span>
+                <span id="chat-bubble-notification" class="chat-bubble-notification"></span>
+            </span>
+        </div>
+
+        <div class="slider-container">
+            <div>
+                <input type="range" min="0" max="1" value="1" step="0.01" id="volumeSlider">
+                <label for="volumeSlider">Volume</label>
+            </div>
+        </div>
+
+        <!-- Chat Window -->
+        <div id="chatWindow">
+            <button class="close-btn" id="closeChat">&times;</button>
+            <div id="chatWindowHeader">Chat Zone</div>
+
+            <!-- Input for Name -->
+            <input id="usernameInput" autocomplete="off" placeholder="Your name here..." />
+
+            <!-- Chat Interface -->
+            <div id="messages"></div>
+            <div id="sendMessages">
+                <input id="messageInput" autocomplete="off" placeholder="Type a message">
+                <button id="sendButton">Send</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
