@@ -251,6 +251,11 @@ function setupSockets() {
     socket.on('chat message', function(data) {
         createNewMessageElement(data);
         showBadge();
+
+        // If message contains "CURRENT ALBUM", update the album image
+        if (data.message.toUpperCase().includes("CURRENT ALBUM")) {
+            getLatestAlbum();
+        }
     });
 
     // Block drag event on inputs
@@ -350,7 +355,6 @@ function setupSockets() {
 
     async function getLatestAlbum() {
         const albumImages = await getAlbumImages();
-
         fetch('https://pauljmercurio.tplinkdns.com/messages/current-album')
             .then(response => response.json())
             .then(data => {
@@ -384,5 +388,5 @@ function findMatchingAlbum(albumImages, album) {
             return image;
         }
     }
-    return "images/albums/311 - From Chaos.jpg";
+    return "images/album_default.jpg";
 }
