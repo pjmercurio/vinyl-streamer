@@ -193,6 +193,7 @@
         width: auto;
         max-height: 70%;
         border-radius: 0;
+        border: none;
     }
 
     #close-btn {
