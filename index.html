@@ -16,14 +16,13 @@
     <script src="scripts/main.js"></script>
 </head>
 <body>
+    <h1>Paul's Live Vinyl Stream</h1>
     <div class="container">
         <div id="vinyl-image-container" class="rotate paused">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png" id="album-image">
             <img src="images/vinyl.png" id="vinyl-image">
         </div>
         <img src="images/tone-arm.png" id="tonearmImage" alt="Tone Arm Image">
-
-        <h1>Paul's Live Vinyl Stream</h1>
 
         <audio id="audioElement" controls>
             <source src="https://pauljmercurio.tplinkdns.com/stream/stream" type="audio/mpeg">
@@ -38,13 +37,6 @@
             </span>
         </div>
 
-        <div class="slider-container">
-            <div>
-                <input type="range" min="0" max="1" value="1" step="0.01" id="volumeSlider">
-                <label for="volumeSlider">Volume</label>
-            </div>
-        </div>
-
         <!-- Chat Window -->
         <div id="chatWindow">
             <button class="close-btn" id="closeChat">&times;</button>
@@ -57,8 +49,17 @@
             <div id="messages"></div>
             <div id="sendMessages">
                 <input id="messageInput" autocomplete="off" placeholder="Type a message">
-                <button id="sendButton">Send</button>
+                <button id="sendButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="24" height="24" viewBox="0 0 511.999 511.999"><path d="M276.484 234.017 138.543 335.02 8.766 270.008zM309.41 247.714l46.612 196.25-132.443-66.345-35.243-17.65v-.012l100.628-93.294z" style="fill:#2ba5f7"/><path d="M503.203 68.039 309.41 247.714l-20.446 18.949-.398-.433-12.059-32.213h-.023z" style="fill:#1e91c4"/><path d="m288.566 266.23.398.433-100.628 93.294v.012l-17.849 64.824-33.231-88.838 1.287-.935 137.941-101.003h.023z" style="fill:#1e91c4"/><path d="m223.579 377.619-53.092 47.174 17.849-64.824z" style="fill:#1e91c4"/><path d="M503.203 68.039 276.484 234.017 8.766 270.008z" style="fill:#2ba5f7"/><path d="M503.227 68.027 356.022 443.964l-46.612-196.25L503.203 68.039l.012-.012z" style="fill:#2ba5f7"/><path d="M509.384 61.784a8.78 8.78 0 0 0-9.476-1.873L5.455 261.892a8.772 8.772 0 0 0-.611 15.965l124.677 62.456 32.758 87.556a8.77 8.77 0 0 0 8.608 5.691c2.062-.092 3.95-.918 5.419-2.224l.015.018 48.644-43.226 127.134 63.683a8.77 8.77 0 0 0 7.073.345 8.77 8.77 0 0 0 5.024-4.991l147.2-375.935a8.77 8.77 0 0 0-2.012-9.446M38.144 274.915l205.361-27.614-105.824 77.476zm37.512-22.748 364.675-148.966-167.204 122.414zm310.454-87.525-93.692 86.863-5.365-14.34zm-81.755 99.723 38.794 163.338-139.566-69.911zm14.779-13.702 161.953-150.15-123.004 314.143zm-171.331 88.449 124.544-91.183 6.162 16.47-96.135 89.129a8.77 8.77 0 0 0-2.494 4.106l-10.659 38.724zm39.011 59.441 7.146-25.959 14.112 7.068z" style="fill:#2795de"/></svg>
+                </button>
             </div>
+        </div>
+    </div>
+
+    <div class="slider-container">
+        <div>
+            <input type="range" min="0" max="1" value="1" step="0.01" id="volumeSlider">
+            <label for="volumeSlider">Volume</label>
         </div>
     </div>
 </body>

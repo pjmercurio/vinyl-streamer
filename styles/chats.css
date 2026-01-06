@@ -5,22 +5,31 @@
     bottom: 50px;
     width: 300px;
     max-height: 350px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(10px);
-    border-radius: 15px;
+    border-radius: 12px;
     padding: 20px;
     row-gap: 10px;
     display: none;  /* Hidden by default */
     flex-direction: column;
     z-index: 1000;
-    box-shadow: 0 0px 30px rgba(0, 0, 0, 0.6);
-    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0px 30px 4px rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+#chatWindow input {
+    color: whitesmoke;
+}
+
+#chatWindow button {
+    color: whitesmoke;
 }
 
 /* Header for the chat window */
 #chatWindowHeader {
     font-family: 'Super Funky';
-    font-size: 16px;
+    font-size: 14pt;
     font-weight: bold;
     text-align: center;
     color: #DBA841;
@@ -33,14 +42,14 @@
     padding: 10px;
     border-radius: 10px;
     display: none;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(220, 220, 255, 0.05);
 }
 
 #sendMessages {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    column-gap: 6px;
+    column-gap: 2px;
 }
 
 /* Style for each message item */
@@ -69,7 +78,6 @@
 .message-text {
     font-size: 16px;
     font-weight: normal;
-    color: whitesmoke;
 }
 
 /* Close button styling */
@@ -83,11 +91,10 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: whitesmoke;
     border-radius: 50%;
     justify-content: center;
     align-items: center;
-    background-color: transparent;;
+    background-color: transparent;
 }
 
 .close-btn:hover {
@@ -107,8 +114,7 @@
     width: 130px;
     text-align: center;
     font-size: 11pt;
-    background-color: rgba(0, 0, 0, 0.4);
-    color: whitesmoke;
+    background-color: rgba(220, 220, 255, 0.05);
 }
 
 #usernameInput:focus {
@@ -116,12 +122,12 @@
 }
 
 #messageInput {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: whitesmoke;
     border-radius: 10px;
     padding: 8px;
+    height: 20px;
     flex: 1;
     border: none;
+    background-color: rgba(220, 220, 255, 0.05);
 }
 
 #messageInput:focus {
@@ -129,21 +135,9 @@
 }
 
 #sendButton {
-    padding: 8px 16px;
     border: none;
-    border-radius: 10px;
     cursor: pointer;
-    width: 72px;
-    color: white;
-    background-color: #007291;
-}
-
-#sendButton:hover {
-    background-color: #0081a4;
-}
-
-#sendButton:active {
-    background-color: #006885;
+    background-color: transparent;
 }
 
 .chat-toggle {
@@ -158,10 +152,6 @@
     position: absolute;
     background-image: url('../images/chat_empty.png');
 }
-
-/* .chat-bubble {
-    background-image: url('images/chat_empty.png');
-} */
 
 .chat-bubble-notification {
     background-image: url('../images/chat_notification.png');
@@ -195,7 +185,7 @@
 }
 
 /* Mobile styles for screens smaller than 768px (typical mobile) */
-@media screen and (max-width: 600px), (max-height: 600px) {
+@media screen and (max-width: 600px), (max-height: 650px) {
     #chatWindow {
         bottom: 0;
         right: 0;
@@ -203,7 +193,6 @@
         width: auto;
         max-height: 70%;
         border-radius: 0;
-        background: rgba(255, 255, 255, 0.05);
     }
 
     #close-btn {
@@ -211,8 +200,12 @@
         right: 5px;
     }
 
-    #usernameInput, #messageInput, #sendButton {
+    #usernameInput, #messageInput {
         font-size: 16px;
+    }
+
+    #sendButton {
+        width: 56px;
     }
 
     .chat-toggle {

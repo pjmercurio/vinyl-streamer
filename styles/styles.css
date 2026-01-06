@@ -9,7 +9,7 @@ body {
     color: #f5f5f5;
     user-select: none;
     overflow: hidden;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)), url('../images/background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)), url('../images/background.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -30,7 +30,11 @@ h1 {
     font-family: 'Boogie Boys Regular';
     font-size: 42pt;
     color: #DBA841;
-    bottom: 100px;
+    top: 0;
+}
+
+.text-glow {
+    text-shadow: 0 0 18px;
 }
 
 audio {
@@ -42,21 +46,41 @@ audio {
 }
 
 #vinyl-image-container {
+    position: relative;          /* <-- important */
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 600px;
+    height: 600px;
+}
+
+/* OUTER shadow only (no inner hole shadow because this layer is a solid circle) */
+#vinyl-image-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.75);
+    pointer-events: none;
+    z-index: 0;
 }
 
 #vinyl-image {
     position: absolute;
+    inset: 0;
+    margin: auto;
     height: 600px;
     width: 600px;
+    z-index: 2;
 }
 
 #album-image {
     position: absolute;
+    inset: 0;
+    margin: auto;
     height: 225px;
     width: 225px;
+    z-index: 1;
 }
 
 #tonearmImage {
@@ -70,7 +94,7 @@ audio {
     width: 25%;
     max-width: 150px; /* Adjust this size to fit with the vinyl image */
     cursor: pointer;
-    z-index: 1; /* Make sure it's on top of the vinyl */
+    z-index: 3; /* Make sure it's on top of the vinyl */
 }
 
 #listener-count-container {
@@ -78,7 +102,7 @@ audio {
     position: absolute;
     align-items: center;
     column-gap: 8px;
-    top: 180px;
+    bottom: 130px;
     font-size: 16pt;
     font-family: 'Super Funky';
     color: #007291;
@@ -90,24 +114,29 @@ audio {
 }
 
 /* Media query for smaller screens */
-@media (max-width: 600px), (max-height: 600px) {
+@media (max-width: 600px), (max-height: 650px) {
 
     .container {
         bottom: 20px;
     }
 
     h1 {
-        font-size: 20pt;
-        bottom: 65px;
+        font-size: 22pt;
+        top: 20px;
     }
 
     #listener-count-container {
-        top: 100px;
+        bottom: 85px;
         font-size: 11pt;
     }
 
     audio {
         top: 100px;
+    }
+
+    #vinyl-image-container {
+        width: 350px;
+        height: 350px;
     }
 
     #vinyl-image {
@@ -127,15 +156,20 @@ audio {
     }
 }
 
-@media (max-height: 600px) {
+@media (max-height: 650px) {
 
     h1 {
-        font-size: 18pt;
+        font-size: 20pt;
     }
 
     #album-image {
         width: 100px;
         height: 100px;
+    }
+
+    #vinyl-image-container {
+        width: 300px;
+        height: 300px;
     }
 
     #vinyl-image {

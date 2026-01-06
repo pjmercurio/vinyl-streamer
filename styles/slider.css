@@ -1,7 +1,8 @@
 .slider-container {
     position: absolute;
-    top: 360px;
+    bottom: 5%;
     display: flex;
+    text-align: center;
     column-gap: 30px;
 }
 
@@ -107,7 +108,7 @@ input[type="range"]::-webkit-slider-runnable-track:active {
     background: #666;
   } */
 
-  @media (max-width: 600px), (max-height: 600px) {
+  @media (max-width: 600px), (max-height: 650px) {
     .slider-container {
         display: none;
     }

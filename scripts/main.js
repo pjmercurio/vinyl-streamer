@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const volumeSlider = document.getElementById('volumeSlider');
     const audioElement = document.getElementById('audioElement');
     const rotatingImage = document.getElementById('vinyl-image-container');
+    const titleText = document.querySelector('h1');
     let audioCtx;
 
     // Volume control
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     audioElement.addEventListener('error', function() {
         rotatingImage.classList.add('paused');
+        titleText.classList.remove('text-glow');
     });
 
     // Fetch the listener count initially and every 20 seconds
@@ -69,7 +71,7 @@ async function fetchListeners() {
       const listenerCount = data.icestats.source.listeners;
 
       listenerCountElement.innerText = `Listener Count: ${listenerCount}`;
-      listenerCountElement.style.display = listenerCount > 0 ? 'block' : 'none';
+      listenerCountElement.style.display = 'block';
     } catch (error) {
       console.error('Error fetching Icecast stats:', error);
       listenerCountElement.style.display = 'none';
@@ -79,6 +81,7 @@ async function fetchListeners() {
 function setupTonearm() {
     const tonearmImage = document.getElementById('tonearmImage');
     const rotatingImage = document.getElementById('vinyl-image-container');
+    const titleText = document.querySelector('h1');
     let isDragging = false;
     let startX;
     let currentRotation = 0;
@@ -125,9 +128,11 @@ function setupTonearm() {
         // Determine if the tonearm is over the vinyl and play/pause the audio
         if (transformRotation > 5.5) {
             rotatingImage.classList.remove('paused');
+            titleText.classList.add('text-glow');
             if (didLetGo) audioElement.muted = false;
         } else {
             rotatingImage.classList.add('paused');
+            titleText.classList.remove('text-glow');
             if (didLetGo) audioElement.pause();
         }
     }
