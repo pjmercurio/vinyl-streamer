@@ -1,4 +1,5 @@
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+const rotationAngleKey = "rotationAngleKey";
 
 document.addEventListener('DOMContentLoaded', function() {
     const volumeSlider = document.getElementById('volumeSlider');
@@ -17,6 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
             audioElement.volume = volumeSlider.value;;
         });
     }
+
+    // Vinyl rotation angle
+    getLastRotation(rotatingImage);
+    window.addEventListener('pagehide', () => saveLastRotation(rotatingImage));
 
     function setAudioContext() {
         if (!!audioCtx) return;
@@ -133,6 +138,7 @@ function setupTonearm() {
         } else {
             rotatingImage.classList.add('paused');
             titleText.classList.remove('text-glow');
+            saveLastRotation(rotatingImage);
             if (didLetGo) audioElement.pause();
         }
     }
@@ -385,6 +391,20 @@ function setupSockets() {
     getPreviousUsername();
     getPreviousMessages();
     getLatestAlbum();
+}
+
+function saveLastRotation(rotatingImage) {
+    const transform = getComputedStyle(rotatingImage).transform;
+    const matrix = new DOMMatrix(transform);
+    const angle = (Math.atan2(matrix.b, matrix.a) * 180 / Math.PI + 360) % 360;
+    localStorage.setItem(rotationAngleKey, angle);
+}
+
+function getLastRotation(rotatingImage) {
+    const angle = localStorage.getItem(rotationAngleKey) ?? 0;
+    const animation = rotatingImage.getAnimations()[0];
+    if (!animation) return;
+    animation.currentTime = (angle / 360) * 3000;
 }
 
 function findMatchingAlbum(albumImages, album) {
