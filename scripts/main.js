@@ -229,6 +229,8 @@ function setupSockets() {
     // Function to send a message
     function sendMessage() {
         const message = messageInput.value;
+        if (message.trim() === '') return;
+
         const username = usernameInput.value || 'Anonymous';
         const timestamp = new Date();
 
@@ -252,10 +254,8 @@ function setupSockets() {
     sendButton.addEventListener('click', sendMessage);
 
     // Send message when Enter key is pressed
-    messageInput.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter' && messageInput.value.trim() !== '') {
-            sendMessage();
-        }
+    messageInput.addEventListener('keydown', function({ key }) {
+        if (key === 'Enter') sendMessage();
     });
 
     // Listen for messages from the server
